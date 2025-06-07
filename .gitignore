@@ -1,3 +1,4 @@
+# Kotlin Multiplatform / Android / Xcode ignores
 *.iml
 .gradle
 .idea
@@ -8,3 +9,10 @@ captures
 .cxx
 local.properties
 xcuserdata
+build/
+*.log
+
+# iOS specific
+Pods/
+*.xcworkspace
+DerivedData/
