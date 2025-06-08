@@ -16,6 +16,7 @@ build/
 .kotlinc/
 .kgp/
 .konan/
+.kotlin/
 
 # iOS specific
 Pods/
