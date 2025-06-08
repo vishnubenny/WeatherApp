@@ -11,6 +11,11 @@ local.properties
 xcuserdata
 build/
 *.log
+.gradle/
+.idea/
+.kotlinc/
+.kgp/
+.konan/
 
 # iOS specific
 Pods/
