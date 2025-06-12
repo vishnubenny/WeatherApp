@@ -7,7 +7,7 @@ class AndroidWeatherViewModel(
     private val sharedWeatherViewModel: WeatherViewModel
 ) : ViewModel() {
 
-    val stateFlow = sharedWeatherViewModel.weatherStateFlow
+    val weatherStateFlow = sharedWeatherViewModel.weatherStateFlow
 
     fun getWeather(lat: Double, lon: Double) {
         sharedWeatherViewModel.getWeather(lat, lon)
