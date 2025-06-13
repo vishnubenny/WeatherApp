@@ -1,10 +1,7 @@
 package com.example.weatherapp.base.di
 
-import com.example.weatherapp.wather.presentation.di.androidModule
-import com.example.weatherapp.weather.presentation.di.weatherModule
+import com.example.weatherapp.wather.presentation.di.appWeatherModule
 
 val appModules = listOf(
-    networkModule,
-    weatherModule,
-    androidModule
+    appWeatherModule
 )
