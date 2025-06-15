@@ -18,7 +18,7 @@ class WeatherViewModel(
         MutableStateFlow<ResponseState<WeatherViewState>>(ResponseState.Loading())
     val weatherStateFlow: StateFlow<ResponseState<WeatherViewState>> = weatherState.asStateFlow()
 
-    fun getWeather(lat: Double, lon: Double) {
+    fun getWeather(lat: Double, lon: Double, scope: CoroutineScope = scope()) {
         scope.launch {
             weatherUseCase.getWeather(lat, lon).collect {
                 weatherState.emit(it)
