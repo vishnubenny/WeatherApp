@@ -29,6 +29,6 @@ class IOSWeatherViewModel: ObservableObject {
     }
     
     func getWeather(lat: Double, lon: Double) {
-        weatherViewModel.getWeather(lat: lat, lon: lon)
+        weatherViewModel.getWeather(lat: lat, lon: lon, scope: weatherViewModel.scope())
     }
 }

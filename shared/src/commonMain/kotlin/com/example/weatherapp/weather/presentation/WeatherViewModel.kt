@@ -26,5 +26,5 @@ class WeatherViewModel(
         }
     }
 
-    fun scope() = scope
+    fun scope(): CoroutineScope = scope
 }
