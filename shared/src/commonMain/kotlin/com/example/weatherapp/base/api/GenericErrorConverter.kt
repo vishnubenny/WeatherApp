@@ -13,7 +13,7 @@ class GenericErrorConverter<T> : Converter<Throwable, ResponseState<T>> {
 
     override fun apply(input: Throwable): ResponseState<T> = convertToCause(input)
 
-    private fun convertToCause(cause: Throwable): ResponseState.Error {
+    private fun convertToCause(cause: Throwable): ResponseState.Error<T> {
         return when (cause) {
             is ClientRequestException,
             is ServerResponseException,

@@ -18,6 +18,6 @@ class WeatherUseCase(
     suspend fun getWeather(lat: Double, lon: Double): Flow<ResponseState<WeatherViewState>> =
         weatherRepository.getWeather(lat, lon)
             .mapper(weatherViewStateConverter)
-            .startFlow(ResponseState.Loading)
+            .startFlow(ResponseState.Loading())
             .onError(GenericErrorConverter())
 }

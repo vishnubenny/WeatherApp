@@ -15,7 +15,7 @@ class WeatherViewModel(
 ) {
 
     private val weatherState =
-        MutableStateFlow<ResponseState<WeatherViewState>>(ResponseState.Loading)
+        MutableStateFlow<ResponseState<WeatherViewState>>(ResponseState.Loading())
     val weatherStateFlow: StateFlow<ResponseState<WeatherViewState>> = weatherState.asStateFlow()
 
     fun observeWeatherState(): StateFlow<ResponseState<WeatherViewState>> = weatherStateFlow
@@ -27,4 +27,6 @@ class WeatherViewModel(
             }
         }
     }
+
+    fun scope() = scope
 }

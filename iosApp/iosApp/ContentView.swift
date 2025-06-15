@@ -2,26 +2,36 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    let greet = Greeting().greet()
+    @StateObject var viewModel: IOSWeatherViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Welcome")
-                .font(.title)
-                .bold()
+        VStack {
+            switch viewModel.state {
+            case is ResponseStateLoading<WeatherViewState>:
+                ProgressView("Loading...")
 
-            Text(greet)
-                .foregroundColor(.gray)
+            case let success as ResponseStateSuccess<WeatherViewState>:
+                if let weather = success.data {
+                    Text("Temperature: \(weather.temperature) \(weather.temperatureUnit)")
+                        .font(.title2)
+                    Text("Wind Speed: \(weather.windSpeed) \(weather.windSpeedUnit)")
+                        .font(.subheadline)
+                } else {
+                    Text("No weather data available")
+                }
 
-            Text("From Kotlin Multiplatform!")
-                .italic()
+            case let error as ResponseStateError<WeatherViewState>:
+                Text("Error: \(error.message ?? "Unknown error")")
+                    .foregroundColor(.red)
+
+            default:
+                Text("Idle")
+                    .foregroundColor(.gray)
+            }
         }
         .padding()
+        .onAppear {
+            viewModel.getWeather(lat: 37.7749, lon: -122.4194)
+        }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
 }
