@@ -16,7 +16,7 @@ class IOSWeatherViewModel: ObservableObject {
         
         // Observe the shared flow using the watchIOS function
         FlowInteropKt.watchIOS(
-            weatherViewModel.observeWeatherState(),
+            weatherViewModel.weatherStateFlow,
             scope: weatherViewModel.scope(),
             block: { [weak self] newState in
                 if let state = newState as? ResponseState<WeatherViewState> {
