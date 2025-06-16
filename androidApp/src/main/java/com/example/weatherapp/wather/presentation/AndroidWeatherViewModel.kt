@@ -1,16 +1,15 @@
 package com.example.weatherapp.wather.presentation
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.example.weatherapp.base.BaseViewModel
 import com.example.weatherapp.weather.presentation.WeatherViewModel
 
 class AndroidWeatherViewModel(
     private val sharedWeatherViewModel: WeatherViewModel
-) : ViewModel() {
+) : BaseViewModel(sharedWeatherViewModel) {
 
     val weatherStateFlow = sharedWeatherViewModel.weatherStateFlow
 
     fun getWeather(lat: Double, lon: Double) {
-        sharedWeatherViewModel.getWeather(lat, lon, viewModelScope)
+        sharedWeatherViewModel.getWeather(lat, lon)
     }
 }

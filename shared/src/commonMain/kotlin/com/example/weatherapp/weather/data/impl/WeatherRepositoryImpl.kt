@@ -4,6 +4,7 @@ import com.example.weatherapp.weather.data.fetcher.WeatherApiFetcher
 import com.example.weatherapp.weather.data.model.WeatherResponse
 import com.example.weatherapp.weather.data.repository.WeatherRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 
@@ -13,6 +14,6 @@ class WeatherRepositoryImpl(
 
     override suspend fun getWeather(lat: Double, lon: Double): Flow<WeatherResponse> {
         return weatherApiFetcher.getWeather(lat, lon)
-            .flowOn(Dispatchers.Default)
+            .flowOn(Dispatchers.IO)
     }
 }
