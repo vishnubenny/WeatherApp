@@ -9,7 +9,6 @@ class WeatherApiFetcher(
     private val backend: WeatherBackend
 ) {
     fun getWeather(lat: Double, lon: Double): Flow<WeatherResponse> = flow {
-        val response = backend.getWeatherRaw(lat, lon)
-        emit(response)
+        emit(backend.getWeatherRaw(lat, lon))
     }
 }
